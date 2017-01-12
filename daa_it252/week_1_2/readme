@@ -1,0 +1,33 @@
+1. Implement Bubble/Selection and Insertion Sort algorithm.
+
+a. Input: N = 100, 1000, 10000 for unsorted, sorted and random numbers,
+
+where N is the size of the input.
+
+b. Analyze and compare the algorithms for the above cases considering the
+
+number of iterations in a loop. Write a conclusion with asymptotic notations.
+
+2. Implement divide and conquer technique for sorting the numbers using Merge and
+
+Quick Sort.
+
+a. Input: consider worst, average and best cases of Input.
+
+b. Analyze the algorithms by Substitution, Recurrence tree method.
+
+3. Implement and demonstrate why implementation of Fibonacci series using
+
+recursion takes O (2 ^n ). Find the alternative solution to reduce the complexity of the
+
+same.
+
+Write the solutions to the above problems in observation book and get signed by TA and course
+
+instructor.
+
+Dates:
+
+1. Last date for Execution: 9 th January 2017.
+
+2. Sign by Course Instructor: 12 th January 2017.
