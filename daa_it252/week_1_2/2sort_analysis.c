@@ -1,11 +1,3 @@
-/*
- * Reasons for worst case = best case in quicksort
- * http://www.geeksforgeeks.org/when-does-the-worst-case-of-quicksort-occur/
- * https://en.wikipedia.org/wiki/Quicksort
- * Choice of pivot
-    In the very early versions of quicksort, the leftmost element of the partition would often be chosen as the pivot element. Unfortunately, this causes worst-case behavior on already sorted arrays, which is a rather common use-case. The problem was easily solved by choosing either a random index for the pivot, choosing the middle index of the partition or (especially for longer partitions) choosing the median of the first, middle and last element of the partition for the pivot (as recommended by Sedgewick).[17] This "median-of-three" rule counters the case of sorted (or reverse-sorted) input, and gives a better estimate of the optimal pivot (the true median) than selecting any single element, when no information about the ordering of the input is known.
-  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -137,12 +129,12 @@ int main(void){
 
     printf ("\tQuick Sort:\n");
     printf ("\t\tRandom : %ld\n", quick_random);
-    printf ("\t\tBest : %ld\n", quick_sorted);
-    printf ("\t\tWorst : %ld\n", quick_unsorted);
+    printf ("\t\tSorted : %ld\n", quick_sorted);
+    printf ("\t\tUnsorted : %ld\n", quick_unsorted);
     printf ("\tMerge Sort:\n");
     printf ("\t\tRandom : %ld\n", merge_random);
-    printf ("\t\tBest : %ld\n", merge_sorted);
-    printf ("\t\tWorst : %ld\n", merge_unsorted);
+    printf ("\t\tSorted : %ld\n", merge_sorted);
+    printf ("\t\tUnsorted : %ld\n", merge_unsorted);
 
     fclose(f);
 
