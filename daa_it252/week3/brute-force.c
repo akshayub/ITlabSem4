@@ -15,7 +15,7 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             int temp = 0;
-            for (int k=i; k<j; k++)
+            for (int k=i; k<=j; k++)
                 temp += ar[k];
             if (temp > max){
                 max = temp;
