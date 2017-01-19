@@ -1,0 +1,11 @@
+Assignment 2b.Write a program that creates two pipes and use them for two way
+
+communication between client and server.
+
+1. Create two pipes, pipe1 (pipe1fd[2]) and pipe2 (pipe2fd[2]).
+
+2. call fork to create a child process and let child process run client code
+
+3. In child process close write end of pipe1 (pipe1fd[1]) and read end of pipe2 (pipe2fd[0])
+
+4. parent process close read end of pipe1 (pipe1fd[0]) and write end of pipe2 (pipe2fd[1])
