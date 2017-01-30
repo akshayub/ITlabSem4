@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # for numerical vertices numbered from 1-n
 # taking input of edges
 
