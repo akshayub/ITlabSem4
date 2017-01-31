@@ -8,17 +8,17 @@ double rotate_x=0;
 void specialKeys(int key, int x, int y) {
     //  Right arrow - increase rotation by 5 degree
     if (key == GLUT_KEY_RIGHT)
-      rotate_y += 5;
+      rotate_y += 1;
 
     //  Left arrow - decrease rotation by 5 degree
     else if (key == GLUT_KEY_LEFT)
-      rotate_y -= 5;
+      rotate_y -= 1;
 
     else if (key == GLUT_KEY_UP)
-      rotate_x += 5;
+      rotate_x += 1;
 
     else if (key == GLUT_KEY_DOWN)
-      rotate_x -= 5;
+      rotate_x -= 1;
 
     //  Request display update
     glutPostRedisplay();
@@ -32,7 +32,8 @@ void display() {
     // Rotate when user changes rotate_x and rotate_y
     glRotatef( rotate_x, 1.0, 0.0, 0.0 );
     glRotatef( rotate_y, 0.0, 1.0, 0.0 );
-    /*
+
+    //FRONT face
     glBegin(GL_POLYGON);
         glColor3f(1,0,0);               //Red
         glVertex3f( -0.5, -0.5, -0.5);  //P1
@@ -43,7 +44,7 @@ void display() {
         glColor3f(1,0,1);               //Purple
         glVertex3f( 0.5, -0.5, -0.5);   //P4
     glEnd();
-    */
+
     // White side - BACK
     glBegin(GL_POLYGON);
     glColor3f(   1.0,  1.0, 1.0 );
@@ -88,6 +89,8 @@ void display() {
     glVertex3f( -0.5, -0.5,  0.5 );
     glVertex3f( -0.5, -0.5, -0.5 );
     glEnd();
+
+
 
     glFlush();
     glutSwapBuffers();
