@@ -1,2 +1,3 @@
-Send command from client to server
-Execute the command on server and send the output to the client.
+Send numbers and op from client to server
+Solve accordingly in server
+Send the result to the client.
