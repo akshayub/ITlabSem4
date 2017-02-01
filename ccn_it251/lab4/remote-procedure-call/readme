@@ -1,0 +1,2 @@
+Send command from client to server
+Execute the command on server and send the output to the client.

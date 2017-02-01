@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <stdlib.h>
 #include<unistd.h>
 #include<string.h>
 #include<sys/socket.h>
@@ -10,7 +11,7 @@ int main(int argc,char **argv)
 {
     int i,j;
     ssize_t n;
-    char message[80],recvline[80];
+    char cmd[800],recvline[800];
     struct sockaddr_in servaddr;
     int sockfd;
     sockfd=socket(AF_INET,SOCK_STREAM,0);
@@ -19,16 +20,19 @@ int main(int argc,char **argv)
     servaddr.sin_port=htons(SERV_PORT);
     inet_pton(AF_INET,argv[1],&servaddr.sin_addr);
     connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
-    printf("Server connected!\n");
-    do {
-        printf("Enter a message: ");
-        gets(message);
-        write(sockfd,message,sizeof(message));
-        if (strcmp(message,"quit") == 0)    break;
-        // printf("Waiting for the server...\n");
-        read(sockfd,recvline,80);
-        printf("%s\n",recvline);
-    } while (strcmp(message,"quit") != 0);
+    printf("Connected to server!\n");
+
+    printf("Enter a command to execute: $");
+    gets(cmd);
+    write(sockfd,cmd,sizeof(cmd));
+
+    printf("\nData from server: \n");
+
+    while (read(sockfd, recvline, 800) != 0) {
+        fputs(recvline, stdout);
+    }
+
+    printf("\n\nClosed\n");
     close(sockfd);
     return 0;
 }
