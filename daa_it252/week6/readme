@@ -1,0 +1,8 @@
+Inversions Algorithm
+
+Input : Array
+Output : Number of inversions in the array
+
+Implement using 2 methods.
+a. BruteForce
+b. Divide & Conquer
