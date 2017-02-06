@@ -6,3 +6,8 @@ Output : Number of inversions in the array
 Implement using 2 methods.
 a. BruteForce
 b. Divide & Conquer
+
+Part 2.
+Compare run times with 10,100,1000 ... elements and so on
+
+NOTE : ./generate.py <n> generates n random numbers between 10000 and -10000 in a file named input
