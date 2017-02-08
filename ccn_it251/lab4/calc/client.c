@@ -16,6 +16,7 @@ int main(int argc,char **argv)
     struct sockaddr_in servaddr;
     int sockfd;
     sockfd=socket(AF_INET,SOCK_STREAM,0);
+    setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int));
     bzero(&servaddr,sizeof(servaddr));
     servaddr.sin_family=AF_INET;
     servaddr.sin_port=htons(SERV_PORT);
@@ -38,9 +39,13 @@ int main(int argc,char **argv)
 
         printf("Num2: ");
         scanf("%d", &num2);
+        getchar();  // To capture the next_line or "enter" which was being scanned as the "op" coz, ... it's C.
 
         sprintf(message, "%c %d %d", op, num1, num2);
         write(sockfd,message,sizeof(message));
+        read(sockfd,message,80);
+        printf("The server says\n");
+        puts(message);
     }
     close(sockfd);
     return 0;

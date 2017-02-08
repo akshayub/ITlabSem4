@@ -15,6 +15,7 @@ int main(int argc, char const *argv[]) {
     struct sockaddr_in servaddr,cliaddr;
     int listenfd,connfd,clilen;
     listenfd = socket(AF_INET,SOCK_STREAM,0);
+    setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int));
     bzero(&servaddr,sizeof(servaddr));
     servaddr.sin_family=AF_INET;
     servaddr.sin_port=htons(SERV_PORT);
@@ -30,7 +31,7 @@ int main(int argc, char const *argv[]) {
         int num1, num2;
         char op;
         sscanf(recvline, "%c %d %d", &op, &num1, &num2);
-        int ans;
+        double ans;
         switch (op) {
             case 'q':
             case 'Q':
@@ -47,20 +48,26 @@ int main(int argc, char const *argv[]) {
                 ans = num1*num2;
                 break;
             case '/':
-                if (num2 == 0)
-                    ans = INT_MIN;
+                if (num2 == 0){
+                    sprintf(message, "Division by ZERO error\n");
+                    write(connfd,message,sizeof(message));
+                    continue;
+                }
                 else
-                    ans = num1+num2;
+                    ans = (double)num1/num2;
                 break;
             case '%':
-                if (num2 == 0)
-                    ans = INT_MIN;
+                if (num2 == 0){
+                    sprintf(message, "Division by ZERO error\n");
+                    write(connfd,message,sizeof(message));
+                    continue;
+                }
                 else
                     ans = num1%num2;
                 break;
         }
 
-        sprintf(message, "Answer is %d\n", ans);
+        sprintf(message, "Answer is %.2lf\n", ans);
         write(connfd,message,sizeof(message));
     }
     close(listenfd);
