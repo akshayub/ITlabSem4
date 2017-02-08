@@ -15,6 +15,7 @@ int main(int argc,char **argv)
     struct sockaddr_in servaddr;
     int sockfd;
     sockfd=socket(AF_INET,SOCK_STREAM,0);
+    setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int));
     bzero(&servaddr,sizeof(servaddr));
     servaddr.sin_family=AF_INET;
     servaddr.sin_port=htons(SERV_PORT);
@@ -23,7 +24,7 @@ int main(int argc,char **argv)
     printf("Connected to server!\n");
 
     printf("Enter a command to execute: $");
-    gets(cmd);
+    fgets(cmd, 800, stdin);
     write(sockfd,cmd,sizeof(cmd));
 
     printf("\nData from server: \n");
