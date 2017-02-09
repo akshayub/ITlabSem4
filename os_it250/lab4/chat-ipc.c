@@ -6,7 +6,7 @@
 #include <unistd.h>    /* For getpid() function */
 #include <string.h>    /* For strcpy() function */
 
-#define M_SIZE 100     /* Size of the Message */
+#define M_SIZE 90     /* Size of the Message */
 
 /* Defining our own message, up to M_SIZE char's in length */
 typedef struct {
