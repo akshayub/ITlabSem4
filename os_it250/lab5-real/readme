@@ -1,0 +1,66 @@
+Lab 5:
+
+Program for Implementation of the Producer – Consumer problem using semaphores has been given. Execute it.
+
+------------------------------------------
+
+Assignment 5:
+
+Write a program in which parent process creates and attaches a shared memory segment, forks a child process (remember the child process shares the resources of the parent) , waits for the child to finish, prints out the contents of the shared memory, and finally detaches and removes the shared memory segment.
+The child process runs through the Fibonacci algorithm, inserts the resultant into the next available space in shared memory and prints out the resultant to standard output.
+This program should accept input from the command line with basic error  checking. You know, make sure two args have been provided, they are between the min and max limits of the program; the BASICS.
+
+// Max values to store in shared memory
+// Min value the user can enter
+//shared memory:
+// 1) holds an array of numbers
+// 2) holds how many numbers are in the array
+//MAIN function
+//process ID
+//Shared Memory ID
+//Shared Memory Pointer
+//check to validate atleast two arguments
+
+//validate the input is not larger then the MAX
+//validate the input is not smaller then the MIN
+// 1) create a new shared memory location ‘IPC_PRIVATE’
+// 2) the size of our shared memory structure ‘sizeof(shared_data)’
+// 3) Set Modes S_IRUSR and S_IWUSR so the owner can read and write to the
+//attach the shared memory and get the pointer to the beginning location in memory
+//set the size of the sequence to the argument that was passed in via command line
+// fork a child process
+
+/* error occured */
+
+else /* child process */
+
+
+
+//FIB of zero is always zero
+
+
+//FIB of one is always one
+
+else
+//The Fibonacci Sequence formula ‘R = fib(n-1) + fib(n-2)’
+//The first two numbers in the sequence are always 0 and 1.
+//To get a value in the sequence you will want to take the previous
+//two numbers and add them together. For example:
+// b + a = c
+// [fib(d-1) = c] + [fib(d-2) = b] = R
+// fib(0) = 0
+// fib(1) = 1
+// fib(2): 1 + 0 = 1
+// fib(3): 1 + 1 = 2
+// fib(4): 2 + 1 = 3
+// fib(5): 3 + 2 = 5
+// The next Fibonacci number in the sequence will be ‘8’
+
+
+else  /* parent process */
+/* parent will wait for the child process to complete */
+
+//Print out shared memory
+//detach shared memory
+
+//remove shared memory segment
