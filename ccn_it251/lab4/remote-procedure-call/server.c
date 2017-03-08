@@ -27,8 +27,10 @@ int main(int argc, char const *argv[]) {
     printf("User connected!\n");
 
     read(connfd,recvline,800);
+    recvline[strlen(recvline) - 1] = '\0';
     printf("$%s\n",recvline);
-    strcat(recvline, "> tmpFile");
+    strcat(recvline, " > tmpFile");
+    puts(recvline);
     system(recvline);
 
     FILE *fp = fopen("tmpFile","r");
@@ -38,9 +40,8 @@ int main(int argc, char const *argv[]) {
     }
     fclose(fp);
 
-    // system("rm -f tmpFile");
+    system("rm -f tmpFile");
 
-    // write(connfd,message,sizeof(message));
     close(listenfd);
     return 0;
 }
