@@ -1,18 +1,18 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sys/types.h>
-#define SERV_PORT 5000
+#include<stdio.h>
+#include<unistd.h>
+#include<string.h>
+#include<sys/socket.h>
+#include<netinet/in.h>
+#include<arpa/inet.h>
+#include<sys/types.h>
+#include<math.h>
+#include<stdlib.h>
+#define SERV_PORT 5576
 
 int seq(int x,int h) {
     return (x/h)%2;
 }
-// Use logarithm.
+
 int power_of_2(int x) {
     if (x == 1) return 1;
     while (x > 0) {
@@ -56,41 +56,42 @@ char *hamming(char *input,int len) {
     for (i=len+red;i>0;i--) {
         res = res*10 + hammed[i];
         ans[i] = hammed[i] + '0';
-        printf("%c",ans[i]);
     }
     ans[0] = '\0';
     char *answer = malloc(sizeof(char) * (len+red+1));
-    for (i=len+red;i>0;i--) {
+    for (i=len+red;i>=0;i--) {
         answer[i] = ans[len+red-i];
     }
-    free(ans);
     return answer;
 }
 
-int main(int argc,char **argv){
+
+int main(int argc,char **argv)
+{
     int i,j;
     ssize_t n;
-    char* data = malloc(500 * sizeof(char));
+    char *input = malloc(sizeof(char)*80);
     struct sockaddr_in servaddr;
     int sockfd;
-    sockfd=socket( AF_INET, SOCK_STREAM, 0);
+    sockfd=socket(AF_INET,SOCK_STREAM,0);
     setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int));
-    bzero( &servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(SERV_PORT);
-    inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
-    connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr));
-    printf("Connected to server!\n");
-
-    printf("Enter data to send\n");
-    fgets(data, 500, stdin);
-
-    char *hamData = hamming(data, strlen(data));
-    puts(hamData);
-
-    write(sockfd, hamData, sizeof(hamData));
-
-    printf("\n\nClosed\n");
+    bzero(&servaddr,sizeof(servaddr));
+    servaddr.sin_family=AF_INET;
+    servaddr.sin_port=htons(SERV_PORT);
+    inet_pton(AF_INET,argv[1],&servaddr.sin_addr);
+    connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
+    printf("Server connected!\n");
+    //Server code ends here and user input starts here
+    int red = 0;
+    printf("Enter the string: ");
+    scanf("%s",input);
+    int len = strlen(input);
+    while (pow(2,red) < len+red+1) { red++; }
+    char *answer = malloc(sizeof(char)*(80));
+    answer = hamming(input,len);
+    puts(answer);
+    //Ends here
+    write(sockfd,answer,len+red+1);
     close(sockfd);
     return 0;
 }
