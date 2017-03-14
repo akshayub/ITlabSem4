@@ -14,9 +14,12 @@ class Interval(object):
 
 def getPrev(intervals):
     ans = [None] * len(intervals)
+    starts = map(lambda x:x.start, intervals)
+    ends = map(lambda x:x.end, intervals)
+    weights = map(lambda x:x.weight, intervals)
     for x in xrange(len(intervals)):
         try:
-            map(lambda x:x.end, intervals)
+
         except Exception:
             ans[x] = None
     return ans
