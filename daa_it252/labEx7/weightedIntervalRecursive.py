@@ -17,9 +17,9 @@ def getPrev(intervals):
     starts = map(lambda x:x.start, intervals)
     ends = map(lambda x:x.end, intervals)
     weights = map(lambda x:x.weight, intervals)
-    for x in xrange(len(intervals)):
+    for x in xrange(len(intervals)-1,-1,-1):
         try:
-
+            print intervals[x].end
         except Exception:
             ans[x] = None
     return ans
