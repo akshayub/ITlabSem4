@@ -1,0 +1,73 @@
+Design and Analysis of Algorithms | IT252
+
+
+                                   Lab Exercise 8
+
+
+
+Problem 1: Edit Distance (Sequence Alignment)
+
+a) Given two strings x[1..n] and y[1..m] calculate the edit distance (the cost of the
+optimal alignment) of x and y. As discussed in class, you are allowed three
+operations: insert a character, delete a character & replace a character, each
+operation having cost 1. For e.g. for input strings
+
+      x = “TYPES”         &        y = “STYLE”
+
+your program should output ‘3’, since an optimal alignment is
+
+        _     T     Y    P     E     S
+
+         |     |     |    |    |     |
+
+        S      T    Y     L    E     _
+
+whose cost (edit distance) = 3. Your algorithm should be recursive (a top-down
+algorithm), that uses memoization.
+
+b) Write an iterative (non-recursive) version of the previous algorithm.
+c) Print the optimal alignment of the two strings along with the cost of each
+matching. For the above input strings your program should print:
+
+_ S 1
+
+T T 0
+
+Y Y 0
+
+P L 1
+
+E E 0
+
+S _ 1
+Design and Analysis of Algorithms | IT252
+
+
+
+
+Problem 2: Stock Trading.
+
+An oracle – or a very clever prediction algorithm – is able to tell you the
+future share prices of a company Transparent Inc. Assuming the share price
+is fixed on any given day, you will thus have as input the share prices for the
+next ‘n’ days.
+
+On each day you are allowed to do any one of the following operations: buy
+one share of Transparent Inc or sell any number of its shares that you have
+already purchased. You may also choose to not do any transaction at all.
+
+a) For a given list of share prices for the next ‘n’ days, what is the maximum
+profit that can be obtained under the above constraints ? For e.g. if the share
+prices for the next 3 days are [2, 4, 50], the maximum profit obtainable
+would be 94 (buy a share on day 1 and day 2, sell them both on day 3]. If the
+share prices are [25, 12, 10], the maximum profit obtainable would be 0.
+
+b) Print the list of daily transactions that give you the maximum profit.
+
+
+
+Problem 3: Spelling Corrector.
+
+Read through http://norvig.com/spell-correct.html to implement a simple
+spelling corrector.
+

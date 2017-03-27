@@ -1,0 +1,12 @@
+                                    Lab 9 – Shortest Paths.
+
+Problem . Implement the Dijkstra’s algorithm to find the shortest path from a source vertex ‘s’ to all
+other vertices in a undirected weighted graph G.
+
+Problem 2. Implement the Bellman-Ford algorithm to find the shortest path from a source vertex ‘s’
+to all other vertices in a undirected weighted graph G. Your program will need to detect if there is a
+cycle of negative weight; Print a message if this occurs.
+
+Problem 3. Implement Johnson’s algorithm to find the shortest path between all pairs of vertices in
+a graph. You can read about Johnson’s algorithm here. http://www.geeksforgeeks.org/johnsons-algorithm
+

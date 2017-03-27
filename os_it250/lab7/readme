@@ -1,0 +1,7 @@
+Assignment on semaphores:
+
+1) Write a C Program to solve Dining philosophers problem using monitors as a
+
+solution and implememt this problem using threads.
+
+2)Implement Banker's Algorithm.
